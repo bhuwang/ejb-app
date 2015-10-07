@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.bhuwan.ejb.entities.Staff;
+import com.bhuwan.ejb.utils.Gender;
 
 /**
  *
@@ -39,17 +40,18 @@ public class MainSessionBean {
 		System.out.println("Inside MainSessionBean#add method............");
 		// create object
 		Staff staff = new Staff();
-		staff.setName("EJB - Bhuwan Gautam");
+		staff.setName("EJB Enum - Bhuwan Gautam");
 		staff.setAddress("Lamachaur - Pokhara");
 		staff.setTempaddress("Kapan Kathmandu");
+		staff.setGender(Gender.M);
 		// persist to db
 		em.persist(staff);
 	}
 
 	private static void update(EntityManager em) {
 		Staff staff = em.find(Staff.class, 3);
-		staff.setName("Bhuwaneshwor Gautam");
-		staff.setAddress("Kapan Kathmandu");
+		staff.setName("Suman Shrestha");
+		staff.setAddress("Morang Biratnagar");
 		staff.setTempaddress("Kapan Kathmandu");
 		// update staff name
 		// In the code below there is no merge. Working with Hibernate means

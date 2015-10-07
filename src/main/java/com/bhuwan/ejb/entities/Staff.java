@@ -1,7 +1,18 @@
 package com.bhuwan.ejb.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import com.bhuwan.ejb.utils.Gender;
 
 
 /**
@@ -24,6 +35,10 @@ public class Staff implements Serializable {
 
 	@Column(name="NAME")
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="GENDER")
+	private Gender gender;
 
 	@Column(name="TEMPADDRESS")
 	private String tempaddress;
@@ -61,6 +76,20 @@ public class Staff implements Serializable {
 
 	public void setTempaddress(String tempaddress) {
 		this.tempaddress = tempaddress;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public Gender getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 
 }

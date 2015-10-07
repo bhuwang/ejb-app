@@ -12,8 +12,9 @@
 		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 		<class>com.bhuwan.ejb.entities.Staff</class>
 		<properties>
-			<!-- create if the table not exist otherwise adds the missing columns  - this is not working -->
-			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+			<!-- Properties for Hibernate -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence>
