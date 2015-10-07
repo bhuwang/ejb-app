@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="ejb_ds">
+		<!-- If you are running in a production environment, add a managed data 
+			source, this example data source is just for development and testing! -->
+		<!-- The datasource is deployed as ${ds-deployment-location}, you can find 
+			it in the source at mysql-ds.xml -->
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+		<class>com.bhuwan.ejb.entities.Staff</class>
+		<properties>
+			<!-- create if the table not exist otherwise adds the missing columns  - this is not working -->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+		</properties>
+	</persistence-unit>
+</persistence>
