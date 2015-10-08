@@ -11,6 +11,8 @@
 			it in the source at mysql-ds.xml -->
 		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 		<class>com.bhuwan.ejb.entities.Staff</class>
+		<class>com.bhuwan.ejb.entities.Cage</class>
+		<class>com.bhuwan.ejb.entities.Animal</class>
 		<properties>
 			<!-- Properties for Hibernate -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />

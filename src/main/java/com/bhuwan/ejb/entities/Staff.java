@@ -1,47 +1,54 @@
 package com.bhuwan.ejb.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.bhuwan.ejb.utils.Gender;
-
 
 /**
  * The persistent class for the staff database table.
  * 
  */
 @Entity
-@Table(name="staff")
-@NamedQuery(name="Staff.findAll", query="SELECT s FROM Staff s")
+@Table(name = "emp_staff")
+@NamedQuery(name = "Staff.findAll", query = "SELECT s FROM Staff s")
 public class Staff implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// TableGenerator is database agnostic implementation and it take care of the id generation part.
+	@TableGenerator(name = "idTableGenerator", pkColumnName = "gen_name", pkColumnValue = "staff_id_gen", valueColumnName = "gen_value", table = "id_generator")
+	@GeneratedValue(generator="idTableGenerator")
 	private int id;
 
-	@Column(name="ADDRESS")
 	private String address;
 
-	@Column(name="NAME")
+	@Column(name = "NAME")
 	private String name;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="GENDER")
 	private Gender gender;
 
-	@Column(name="TEMPADDRESS")
 	private String tempaddress;
+
+	@Column(name = "start_date")
+	// Temporal determine whether we are going to save date with time, date
+	// only, or time only
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 
 	public Staff() {
 	}
@@ -86,10 +93,26 @@ public class Staff implements Serializable {
 	}
 
 	/**
-	 * @param gender the gender to set
+	 * @param gender
+	 *            the gender to set
 	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * @param startDate
+	 *            the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 }
