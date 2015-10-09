@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -21,11 +23,14 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @Table(name = "animal")
+@NamedQueries({ @NamedQuery(name = "Animal.findAll", query = "select a from Animal a"),
+		@NamedQuery(name = "Animal.simple", query = "select a from Animal a ") })
 public class Animal implements Serializable {
 	private static final long serialVersionUID = -6680423925972669316L;
 
 	@Id
-	@TableGenerator(name = "animalIdGenerator", pkColumnName = "gen_name", pkColumnValue = "animal_id_gen", valueColumnName = "gen_value", table = "id_generator")
+	@TableGenerator(name = "animalIdGenerator", pkColumnName = "gen_name", pkColumnValue = "animal_id_gen", valueColumnName = "gen_value",
+			table = "id_generator")
 	@GeneratedValue(generator = "animalIdGenerator")
 	@Column(name = "animal_id")
 	private Integer animalId;
@@ -43,7 +48,8 @@ public class Animal implements Serializable {
 	private Category category;
 
 	@ManyToMany
-	@JoinTable(name = "animal_food_item", joinColumns = { @JoinColumn(name = "animal_id") }, inverseJoinColumns = { @JoinColumn(name = "food_item_id") })
+	@JoinTable(name = "animal_food_item", joinColumns = { @JoinColumn(name = "animal_id") }, inverseJoinColumns = { @JoinColumn(
+			name = "food_item_id") })
 	private List<FoodItem> foodItems;
 
 	public Animal() {

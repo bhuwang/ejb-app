@@ -36,15 +36,25 @@ public class MainSessionBean {
 
 	@PostConstruct
 	public void mainMethod() {
-		System.out
-				.println("Inside MainSessionBean#mainMethod method............");
-		add(em);
-		addOneToOne(em);
-		addOneToMany(em);
-		manyToMany(em);
-		// update(em);
+		System.out.println("Inside MainSessionBean#mainMethod method............");
+		// add(em);
+		// addOneToOne(em);
+		// addOneToMany(em);
+		// manyToMany(em);
+		update(em);
 		// select(em);
 		// delete(em);
+		// JPQLDemo.simpleQuery(em);
+		// JPQLDemo.parameterizedQuery(em);
+		// JPQLDemo.selectPartOfObject(em);
+		// JPQLDemo.namedQueries(em);
+		// JPQLDemo.selectPartWithCustomPojo(em);
+		// JPQLDemo.paginationSupport(em);
+		// JPQLDemo.joinExplicitlyDefined(em);
+		// JPQLDemo.joinSimple(em);
+		// JPQLDemo.joinWithMultivaluesAssociation(em);
+		// JPQLDemo.checkingEmpty(em);
+		JPQLDemo.grouAndOrder(em);
 	}
 
 	private static void add(EntityManager em) {
@@ -61,7 +71,7 @@ public class MainSessionBean {
 	}
 
 	private static void update(EntityManager em) {
-		Staff staff = em.find(Staff.class, 3);
+		Staff staff = em.find(Staff.class, 151);
 		staff.setName("Suman Shrestha");
 		staff.setAddress("Morang Biratnagar");
 		staff.setTempaddress("Kapan Kathmandu");
@@ -85,10 +95,10 @@ public class MainSessionBean {
 	private static void addOneToOne(EntityManager em) {
 		Animal animal = new Animal();
 		animal.setType("Domestic Animal");
-		animal.setTotalNo(23);
+		animal.setTotalNo(9);
 
 		Cage cage = new Cage();
-		cage.setCageNo("C45");
+		cage.setCageNo("C70");
 		cage.setLocation("Kathmandu Jwalkhel");
 
 		// Do not forget to hook both the side in bidirectional.
@@ -102,15 +112,15 @@ public class MainSessionBean {
 
 	private static void addOneToMany(EntityManager em) {
 		Animal animal = new Animal();
-		animal.setType("Buffalo 5");
+		animal.setType("Buffalo");
 		animal.setTotalNo(12);
 
 		Category category = new Category();
-		category.setCategoryType("Wild Animal 5");
+		category.setCategoryType("Mammals");
 		em.persist(category);
 
 		// persist to db
-		category = em.find(Category.class, 51);
+		category = em.find(Category.class, 2);
 
 		// set category
 		animal.setCategory(category);
@@ -121,12 +131,12 @@ public class MainSessionBean {
 		List<FoodItem> items = new ArrayList<FoodItem>();
 		FoodItem banana = new FoodItem();
 		banana.setName("Banana");
-		banana.setQuantity("12");
+		banana.setQuantity("45");
 		em.persist(banana);
 
 		FoodItem vegies = new FoodItem();
 		vegies.setName("Vegies");
-		vegies.setQuantity("8");
+		vegies.setQuantity("36");
 		em.persist(vegies);
 
 		items.add(banana);

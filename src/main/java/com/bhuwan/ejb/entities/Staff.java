@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import com.bhuwan.ejb.utils.Gender;
 
@@ -22,7 +23,7 @@ import com.bhuwan.ejb.utils.Gender;
  * 
  */
 @Entity
-@Table(name = "emp_staff")
+@Table(name = "staff")
 @NamedQuery(name = "Staff.findAll", query = "SELECT s FROM Staff s")
 public class Staff implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -30,8 +31,9 @@ public class Staff implements Serializable {
 	@Id
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	// TableGenerator is database agnostic implementation and it take care of the id generation part.
-	@TableGenerator(name = "idTableGenerator", pkColumnName = "gen_name", pkColumnValue = "staff_id_gen", valueColumnName = "gen_value", table = "id_generator")
-	@GeneratedValue(generator="idTableGenerator")
+	@TableGenerator(name = "idTableGenerator", pkColumnName = "gen_name", pkColumnValue = "staff_id_gen", valueColumnName = "gen_value",
+			table = "id_generator")
+	@GeneratedValue(generator = "idTableGenerator")
 	private int id;
 
 	private String address;
@@ -49,6 +51,10 @@ public class Staff implements Serializable {
 	// only, or time only
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
+
+	// for locking: to prevent data integrity
+	@Version
+	private int version;
 
 	public Staff() {
 	}
