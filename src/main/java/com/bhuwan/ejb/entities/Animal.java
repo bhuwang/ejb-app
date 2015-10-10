@@ -56,6 +56,11 @@ public class Animal implements Serializable {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "type: " + type + " totalNo: " + totalNo + " category: " + category.getCategoryType();
+	}
+
 	/**
 	 * @return the animalId
 	 */

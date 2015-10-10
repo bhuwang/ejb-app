@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bhuwan.ejb;
+package com.bhuwan.ejb.app;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +41,7 @@ public class MainSessionBean {
 		// addOneToOne(em);
 		// addOneToMany(em);
 		// manyToMany(em);
-		update(em);
+		// update(em);
 		// select(em);
 		// delete(em);
 		// JPQLDemo.simpleQuery(em);
@@ -54,7 +54,7 @@ public class MainSessionBean {
 		// JPQLDemo.joinSimple(em);
 		// JPQLDemo.joinWithMultivaluesAssociation(em);
 		// JPQLDemo.checkingEmpty(em);
-		JPQLDemo.grouAndOrder(em);
+		// JPQLDemo.grouAndOrder(em);
 	}
 
 	private static void add(EntityManager em) {

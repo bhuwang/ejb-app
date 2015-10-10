@@ -25,7 +25,22 @@ package com.bhuwan.ejb;
  * There is no pool of instances.
  * 
  * 3. Singleton
- * There will be a only one instance of the bean per application server. So some concurrency features are available.	
+ * There will be a only one instance of the bean per application server. So some concurrency features are available.
+ * 
+ * Lifecycle of stateless session:
+ * a. Does not exist
+ * b. new instance, injections, calling postconstruct method
+ * c. Method Ready - this is the place where client can access the bean
+ * d. Pre-destroy - Remove from the server
+ * 
+ * Lifecycle of stateless session:
+ * a. Does not exist
+ * b. new instance, injections, calling postconstruct method
+ * c. Method Ready - this is the place where client can access the bean
+ * d. Pre-destroy - Remove from the server
+ * e. Passive State - @Prepassivate, @PostActivate
+ * 
+ * We can also implement <code>timeout</code> to make sure the bean removed the server.
  * 
  * </pre>
  */

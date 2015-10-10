@@ -2,7 +2,7 @@
  * 
  */
 
-package com.bhuwan.ejb;
+package com.bhuwan.ejb.app;
 
 import java.util.List;
 
