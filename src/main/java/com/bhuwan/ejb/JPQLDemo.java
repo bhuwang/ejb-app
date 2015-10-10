@@ -96,6 +96,9 @@ public class JPQLDemo {
 	/**
 	 * Instead of getting whole object here we are trying to get part of object and we will see how we can do it.
 	 * 
+	 * Note: Named queries being specified in annotation form, gives JPA provider and opportunity to pre-process the query and can lead to
+	 * faster results.
+	 * 
 	 * @param em
 	 */
 	public static void namedQueries(EntityManager em) {
