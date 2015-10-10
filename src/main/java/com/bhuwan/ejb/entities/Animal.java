@@ -58,7 +58,8 @@ public class Animal implements Serializable {
 
 	@Override
 	public String toString() {
-		return "type: " + type + " totalNo: " + totalNo + " category: " + category.getCategoryType();
+		return "type: " + type + " totalNo: " + totalNo + " category: "
+				+ (category != null ? category.getCategoryType() : " No Category Defined");
 	}
 
 	/**

@@ -27,13 +27,13 @@ package com.bhuwan.ejb;
  * 3. Singleton
  * There will be a only one instance of the bean per application server. So some concurrency features are available.
  * 
- * Lifecycle of stateless session:
+ * Lifecycle of stateless bean:
  * a. Does not exist
  * b. new instance, injections, calling postconstruct method
  * c. Method Ready - this is the place where client can access the bean
  * d. Pre-destroy - Remove from the server
  * 
- * Lifecycle of stateless session:
+ * Lifecycle of stateless bean:
  * a. Does not exist
  * b. new instance, injections, calling postconstruct method
  * c. Method Ready - this is the place where client can access the bean
@@ -41,6 +41,10 @@ package com.bhuwan.ejb;
  * e. Passive State - @Prepassivate, @PostActivate
  * 
  * We can also implement <code>timeout</code> to make sure the bean removed the server.
+ * 
+ * Lifecycle of singleton bean
+ * Same as stateless bean.
+ * Cuncurrency is supported for singleton bean.
  * 
  * </pre>
  */
